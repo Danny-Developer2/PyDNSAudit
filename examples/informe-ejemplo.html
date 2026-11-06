@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe PyDNSAudit — ejemplo.com</title>
+<style>
+:root{--bg:#0f1419;--panel:#171e26;--line:#263140;--fg:#e6edf3;--muted:#8b98a5;--accent:#3ddc97;--warn:#f0b429;--bad:#ef5350;--info:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.55;font-size:15px}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:19px;margin:32px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-size:16px;margin:24px 0 8px}
+.sub{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .num{font-size:26px;font-weight:700}
+.card .lbl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.sev-confirmado{color:var(--bad)}.sev-probable{color:var(--warn)}.sev-potencial{color:var(--info)}.sev-indicio{color:var(--muted)}.sev-recomendacion{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid var(--line)}
+.finding{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:12px 0}
+.finding h3{margin:0 0 6px;font-size:16px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+.evidence{background:rgba(88,166,255,.07);border-left:3px solid var(--info);padding:8px 12px;margin:8px 0;font-size:13px}
+.reco{background:rgba(61,220,151,.07);border-left:3px solid var(--accent);padding:8px 12px;margin:8px 0;font-size:13px}
+.ok{color:var(--accent)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.foot{margin-top:40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Informe de auditoría DNS</h1>
+  <p class="sub">
+    Herramienta: <strong>PyDNSAudit</strong> v1.0.0
+    &middot; Dominio: <span class="mono">ejemplo.com</span>
+    
+  </p>
+  <p class="sub">
+    Inicio: 2026-11-06 05:14:20 &middot;
+    Fin: 2026-11-06 05:14:20 &middot;
+    Duración: 0.01 s
+  </p>
+
+  <div class="cards">
+    <div class="card"><div class="num sev-confirmado">0</div><div class="lbl">Confirmados</div></div>
+    <div class="card"><div class="num sev-probable">12</div><div class="lbl">Probables</div></div>
+    <div class="card"><div class="num sev-potencial">2</div><div class="lbl">Potenciales</div></div>
+    <div class="card"><div class="num sev-indicio">3</div><div class="lbl">Indicios</div></div>
+    <div class="card"><div class="num sev-recomendacion">0</div><div class="lbl">Recomendaciones</div></div>
+  </div>
+
+  
+  <h2>SPF</h2>
+  
+  <div class="cards">
+    <div class="card"><div class="num">~</div><div class="lbl">Calificador `all`</div></div>
+    <div class="card"><div class="num">1</div><div class="lbl">Consultas DNS estimadas</div></div>
+    <div class="card"><div class="num">1</div><div class="lbl">Include</div></div>
+  </div>
+  <p class="mono sub">v=spf1 ip4:203.0.113.0/24 include:_spf.google.com ~all</p>
+  
+  
+
+  
+  <h2>DMARC</h2>
+  
+  <div class="cards">
+    <div class="card"><div class="num">none</div><div class="lbl">Política</div></div>
+    <div class="card"><div class="num">—</div><div class="lbl">Subdominios</div></div>
+    <div class="card"><div class="num">100</div><div class="lbl">Porcentaje</div></div>
+  </div>
+  <p class="mono sub">v=DMARC1; p=none; rua=mailto:dmarc@ejemplo.com</p>
+  
+  
+
+  <h2>Registros</h2>
+  
+  <h3>A</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">ejemplo.com</td>
+        <td class="mono">203.0.113.10</td>
+        <td>300</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  <h3>AAAA</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">ejemplo.com</td>
+        <td class="mono">2001:db8::10</td>
+        <td>300</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  <h3>MX</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">ejemplo.com</td>
+        <td class="mono">10 mail.ejemplo.com</td>
+        <td>300</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  <h3>NS</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">ejemplo.com</td>
+        <td class="mono">ns1.ejemplo.com, ns2.ejemplo.com</td>
+        <td>3600</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  <h3>TXT</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">ejemplo.com</td>
+        <td class="mono">v=spf1 ip4:203.0.113.0/24 include:_spf.google.com ~all</td>
+        <td>300</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  <h3>CNAME</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">www.ejemplo.com</td>
+        <td class="mono">ejemplo.com</td>
+        <td>300</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+  <h3>SOA</h3>
+  <table>
+    <thead><tr><th>Nombre</th><th>Valores</th><th>TTL</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">ejemplo.com</td>
+        <td class="mono">ns1.ejemplo.com admin.ejemplo.com 2024010101 7200 3600 1209600 3600</td>
+        <td>3600</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+
+  
+  <h2>Subdominios identificados (60)</h2>
+  <table>
+    <thead><tr><th>Nombre</th><th>Tipos</th><th>Direcciones</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td class="mono">admin.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.20</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">api.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">app.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">assets.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">auth.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">autoconfig.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">autodiscover.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">billing.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">blog.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">cdn.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">cloud.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">confluence.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">crm.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">demo.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">dev.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">10.10.0.5</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">docs.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">email.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">erp.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">extranet.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">ftp.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">git.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">github.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">gitlab.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">help.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">imap.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">intranet.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">jenkins.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">jira.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">localhost.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">login.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">m.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">mail.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">monitor.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">mx.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">mx1.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">mx2.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">news.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">ns1.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">ns2.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">owa.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">partners.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">pay.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">pop.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">portal.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">remote.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">secure.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">shop.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">smtp.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">sso.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">stage.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">staging.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">10.10.0.5</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">static.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">status.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">store.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">support.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">test.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">vpn.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">webmail.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">wiki.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+      <tr>
+        <td class="mono">www.ejemplo.com</td>
+        <td>A, AAAA, CNAME</td>
+        <td class="mono">203.0.113.10, 2001:db8::10, ejemplo.com</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  
+
+  <h2>Hallazgos</h2>
+  
+    
+    <div class="finding">
+      <h3><span class="badge sev-indicio">indicio</span>
+          SPF delega en otros dominios</h3>
+      <p class="sub">Categoría: spf · ID: <span class="mono">spf_includes_present</span></p>
+      <p>La política incluye otros dominios, lo que extiende la superficie de confianza a la configuración de terceros.</p>
+      <div class="evidence"><strong>Evidencia:</strong> include: _spf.google.com</div>
+      <div class="reco"><strong>Recomendación:</strong> Revisa periódicamente los dominios incluidos.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc7208#section-4.6.4</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DMARC sin acción de aplicación</h3>
+      <p class="sub">Categoría: dmarc · ID: <span class="mono">dmarc_policy_none</span></p>
+      <p>La política `p=none` solo pide informes, por lo que los mensajes suplantados siguen entregándose con normalidad.</p>
+      <div class="evidence"><strong>Evidencia:</strong> DMARC: v=DMARC1; p=none; rua=mailto:dmarc@ejemplo.com</div>
+      <div class="reco"><strong>Recomendación:</strong> Evoluciona a p=quarantine y, cuando sea viable, a p=reject.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc7489</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-potencial">potencial</span>
+          DMARC sin protección explícita de subdominios</h3>
+      <p class="sub">Categoría: dmarc · ID: <span class="mono">dmarc_subdomain_policy</span></p>
+      <p>Sin `sp=` los subdominios pueden quedar fuera de la política principal, lo que deja vías de suplantación abiertas.</p>
+      <div class="evidence"><strong>Evidencia:</strong> sp=ausente · p=none</div>
+      <div class="reco"><strong>Recomendación:</strong> Declara sp=reject o sp=quarantine para los subdominios.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc7489</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: default</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_default</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: google</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_google</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: selector1</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_selector1</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: selector2</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_selector2</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: k1</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_k1</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: mail</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_mail</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: smtp</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_smtp</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: dkim</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_dkim</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: mimecast</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_mimecast</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          DKIM con clave de longitud insuficiente: zoho</h3>
+      <p class="sub">Categoría: dkim · ID: <span class="mono">dkim_short_key_zoho</span></p>
+      <p>Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> Longitud estimada: 21 bits</div>
+      <div class="reco"><strong>Recomendación:</strong> Usa claves RSA de al menos 2048 bits.</div>
+      <p class="sub">Referencias: <span class="mono">https://datatracker.ietf.org/doc/html/rfc6376</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-indicio">indicio</span>
+          Subdominios de entornos no productivos expuestos</h3>
+      <p class="sub">Categoría: exposicion · ID: <span class="mono">exposed_non_production_subdomains</span></p>
+      <p>Se han identificado subdominios asociados a desarrollo, pruebas o preproducción, que suelen tener controles más débiles que producción.</p>
+      <div class="evidence"><strong>Evidencia:</strong> demo.ejemplo.com, dev.ejemplo.com, stage.ejemplo.com, staging.ejemplo.com, test.ejemplo.com</div>
+      <div class="reco"><strong>Recomendación:</strong> Restringe el acceso a estos entornos o retíralos de la resolución pública.</div>
+      <p class="sub">Referencias: <span class="mono">https://owasp.org/www-project-web-security-testing-guide/</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-potencial">potencial</span>
+          Subdominios de administración expuestos</h3>
+      <p class="sub">Categoría: exposicion · ID: <span class="mono">exposed_administrative_subdomains</span></p>
+      <p>Los nombres identificados suelen alojar paneles de administración o accesos remotos, que son objetivos habituales de ataque.</p>
+      <div class="evidence"><strong>Evidencia:</strong> admin.ejemplo.com, extranet.ejemplo.com, intranet.ejemplo.com, portal.ejemplo.com, remote.ejemplo.com, vpn.ejemplo.com</div>
+      <div class="reco"><strong>Recomendación:</strong> Limita el acceso a estos servicios mediante red o autenticación fuerte.</div>
+      <p class="sub">Referencias: <span class="mono">https://owasp.org/www-project-web-security-testing-guide/</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-probable">probable</span>
+          Direcciones IP internas expuestas en DNS público</h3>
+      <p class="sub">Categoría: exposicion · ID: <span class="mono">internal_addresses_exposed</span></p>
+      <p>Los registros DNS públicos revelan direcciones de la red interna, lo que facilita el reconocimiento de la infraestructura.</p>
+      <div class="evidence"><strong>Evidencia:</strong> 203.0.113.10, 2001:db8::10</div>
+      <div class="reco"><strong>Recomendación:</strong> Elimina los registros que expongan direcciones internas.</div>
+      <p class="sub">Referencias: <span class="mono">https://owasp.org/www-project-web-security-testing-guide/</span></p>
+    </div>
+    
+    <div class="finding">
+      <h3><span class="badge sev-indicio">indicio</span>
+          Servidores de correo identificables</h3>
+      <p class="sub">Categoría: exposicion · ID: <span class="mono">mail_servers_exposed</span></p>
+      <p>Los registros MX revelan los servidores de correo del dominio, lo que es información útil para dirigir ataques contra el correo.</p>
+      <div class="evidence"><strong>Evidencia:</strong> 10 mail.ejemplo.com</div>
+      <div class="reco"><strong>Recomendación:</strong> Considera servidores antiabuso y revisa la configuración SPF/DKIM/DMARC.</div>
+      <p class="sub">Referencias: <span class="mono">https://www.rfc-editor.org/rfc/rfc5321</span></p>
+    </div>
+    
+  
+
+  <div class="foot">
+    <p>Generado por PyDNSAudit v1.0.0. Informe de auditoría autorizada.
+    No incluye datos personales ni credenciales. Verifique siempre los hallazgos antes de
+    considerarlos definitivos.</p>
+  </div>
+</main>
+</body>
+</html>

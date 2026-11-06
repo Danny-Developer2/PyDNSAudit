@@ -1,0 +1,8 @@
+{
+  "name": "Laboratorio de pruebas local",
+  "description": "Alcance autorizado de ejemplo para ejecutar PyDNSAudit.",
+  "authorized_targets": [
+    "ejemplo.com",
+    "example.com"
+  ]
+}

@@ -1,0 +1,1199 @@
+{
+  "tool": "PyDNSAudit",
+  "version": "1.0.0",
+  "domain": "ejemplo.com",
+  "scope": null,
+  "authorized": true,
+  "started_at": "2026-11-06T05:14:20.618404Z",
+  "finished_at": "2026-11-06T05:14:20.628757Z",
+  "duration_seconds": 0.01,
+  "nameservers": [
+    "ns1.ejemplo.com",
+    "ns2.ejemplo.com"
+  ],
+  "records": {
+    "A": [
+      {
+        "name": "ejemplo.com",
+        "type": "A",
+        "values": [
+          "203.0.113.10"
+        ],
+        "ttl": 300
+      }
+    ],
+    "AAAA": [
+      {
+        "name": "ejemplo.com",
+        "type": "AAAA",
+        "values": [
+          "2001:db8::10"
+        ],
+        "ttl": 300
+      }
+    ],
+    "MX": [
+      {
+        "name": "ejemplo.com",
+        "type": "MX",
+        "values": [
+          "10 mail.ejemplo.com"
+        ],
+        "ttl": 300
+      }
+    ],
+    "NS": [
+      {
+        "name": "ejemplo.com",
+        "type": "NS",
+        "values": [
+          "ns1.ejemplo.com",
+          "ns2.ejemplo.com"
+        ],
+        "ttl": 3600
+      }
+    ],
+    "TXT": [
+      {
+        "name": "ejemplo.com",
+        "type": "TXT",
+        "values": [
+          "v=spf1 ip4:203.0.113.0/24 include:_spf.google.com ~all"
+        ],
+        "ttl": 300
+      }
+    ],
+    "CNAME": [
+      {
+        "name": "www.ejemplo.com",
+        "type": "CNAME",
+        "values": [
+          "ejemplo.com"
+        ],
+        "ttl": 300
+      }
+    ],
+    "SOA": [
+      {
+        "name": "ejemplo.com",
+        "type": "SOA",
+        "values": [
+          "ns1.ejemplo.com admin.ejemplo.com 2024010101 7200 3600 1209600 3600"
+        ],
+        "ttl": 3600
+      }
+    ]
+  },
+  "spf": {
+    "domain": "ejemplo.com",
+    "present": true,
+    "raw": "v=spf1 ip4:203.0.113.0/24 include:_spf.google.com ~all",
+    "mechanisms": [
+      "ip4:203.0.113.0/24",
+      "include:_spf.google.com",
+      "~all"
+    ],
+    "lookup_count": 1,
+    "all_qualifier": "~",
+    "includes": [
+      "_spf.google.com"
+    ],
+    "error": null
+  },
+  "dmarc": {
+    "domain": "ejemplo.com",
+    "present": true,
+    "raw": "v=DMARC1; p=none; rua=mailto:dmarc@ejemplo.com",
+    "policy": "none",
+    "subdomain_policy": null,
+    "percentage": null,
+    "aggregate_reports": [
+      "mailto:dmarc@ejemplo.com"
+    ],
+    "forensic_reports": [],
+    "error": null
+  },
+  "dkim": [
+    {
+      "domain": "ejemplo.com",
+      "selector": "default",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "google",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "selector1",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "selector2",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "k1",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "mail",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "smtp",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "dkim",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "mimecast",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    },
+    {
+      "domain": "ejemplo.com",
+      "selector": "zoho",
+      "present": true,
+      "raw": "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC",
+      "key_type": "rsa",
+      "key_size": 21,
+      "error": null
+    }
+  ],
+  "subdomains": [
+    {
+      "name": "admin.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.20"
+      ]
+    },
+    {
+      "name": "api.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "app.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "assets.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "auth.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "autoconfig.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "autodiscover.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "billing.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "blog.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "cdn.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "cloud.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "confluence.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "crm.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "demo.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "dev.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "10.10.0.5"
+      ]
+    },
+    {
+      "name": "docs.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "email.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "erp.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "extranet.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "ftp.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "git.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "github.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "gitlab.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "help.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "imap.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "intranet.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "jenkins.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "jira.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "localhost.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "login.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "m.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "mail.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "monitor.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "mx.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "mx1.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "mx2.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "news.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "ns1.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "ns2.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "owa.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "partners.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "pay.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "pop.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "portal.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "remote.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "secure.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "shop.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "smtp.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "sso.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "stage.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "staging.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "10.10.0.5"
+      ]
+    },
+    {
+      "name": "static.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "status.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "store.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "support.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "test.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "vpn.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "webmail.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "wiki.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    },
+    {
+      "name": "www.ejemplo.com",
+      "record_types": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "addresses": [
+        "203.0.113.10",
+        "2001:db8::10",
+        "ejemplo.com"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "spf_includes_present",
+      "category": "spf",
+      "severity": "indicio",
+      "title": "SPF delega en otros dominios",
+      "description": "La política incluye otros dominios, lo que extiende la superficie de confianza a la configuración de terceros.",
+      "evidence": "include: _spf.google.com",
+      "recommendation": "Revisa periódicamente los dominios incluidos.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc7208#section-4.6.4"
+      ]
+    },
+    {
+      "id": "dmarc_policy_none",
+      "category": "dmarc",
+      "severity": "probable",
+      "title": "DMARC sin acción de aplicación",
+      "description": "La política `p=none` solo pide informes, por lo que los mensajes suplantados siguen entregándose con normalidad.",
+      "evidence": "DMARC: v=DMARC1; p=none; rua=mailto:dmarc@ejemplo.com",
+      "recommendation": "Evoluciona a p=quarantine y, cuando sea viable, a p=reject.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc7489"
+      ]
+    },
+    {
+      "id": "dmarc_subdomain_policy",
+      "category": "dmarc",
+      "severity": "potencial",
+      "title": "DMARC sin protección explícita de subdominios",
+      "description": "Sin `sp=` los subdominios pueden quedar fuera de la política principal, lo que deja vías de suplantación abiertas.",
+      "evidence": "sp=ausente · p=none",
+      "recommendation": "Declara sp=reject o sp=quarantine para los subdominios.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc7489"
+      ]
+    },
+    {
+      "id": "dkim_short_key_default",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: default",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_google",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: google",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_selector1",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: selector1",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_selector2",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: selector2",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_k1",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: k1",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_mail",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: mail",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_smtp",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: smtp",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_dkim",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: dkim",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_mimecast",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: mimecast",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "dkim_short_key_zoho",
+      "category": "dkim",
+      "severity": "probable",
+      "title": "DKIM con clave de longitud insuficiente: zoho",
+      "description": "Las claves DKIM cortas pueden verificarse de forma débil y son rechazadas por algunos servicios de correo.",
+      "evidence": "Longitud estimada: 21 bits",
+      "recommendation": "Usa claves RSA de al menos 2048 bits.",
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc6376"
+      ]
+    },
+    {
+      "id": "exposed_non_production_subdomains",
+      "category": "exposicion",
+      "severity": "indicio",
+      "title": "Subdominios de entornos no productivos expuestos",
+      "description": "Se han identificado subdominios asociados a desarrollo, pruebas o preproducción, que suelen tener controles más débiles que producción.",
+      "evidence": "demo.ejemplo.com, dev.ejemplo.com, stage.ejemplo.com, staging.ejemplo.com, test.ejemplo.com",
+      "recommendation": "Restringe el acceso a estos entornos o retíralos de la resolución pública.",
+      "references": [
+        "https://owasp.org/www-project-web-security-testing-guide/"
+      ]
+    },
+    {
+      "id": "exposed_administrative_subdomains",
+      "category": "exposicion",
+      "severity": "potencial",
+      "title": "Subdominios de administración expuestos",
+      "description": "Los nombres identificados suelen alojar paneles de administración o accesos remotos, que son objetivos habituales de ataque.",
+      "evidence": "admin.ejemplo.com, extranet.ejemplo.com, intranet.ejemplo.com, portal.ejemplo.com, remote.ejemplo.com, vpn.ejemplo.com",
+      "recommendation": "Limita el acceso a estos servicios mediante red o autenticación fuerte.",
+      "references": [
+        "https://owasp.org/www-project-web-security-testing-guide/"
+      ]
+    },
+    {
+      "id": "internal_addresses_exposed",
+      "category": "exposicion",
+      "severity": "probable",
+      "title": "Direcciones IP internas expuestas en DNS público",
+      "description": "Los registros DNS públicos revelan direcciones de la red interna, lo que facilita el reconocimiento de la infraestructura.",
+      "evidence": "203.0.113.10, 2001:db8::10",
+      "recommendation": "Elimina los registros que expongan direcciones internas.",
+      "references": [
+        "https://owasp.org/www-project-web-security-testing-guide/"
+      ]
+    },
+    {
+      "id": "mail_servers_exposed",
+      "category": "exposicion",
+      "severity": "indicio",
+      "title": "Servidores de correo identificables",
+      "description": "Los registros MX revelan los servidores de correo del dominio, lo que es información útil para dirigir ataques contra el correo.",
+      "evidence": "10 mail.ejemplo.com",
+      "recommendation": "Considera servidores antiabuso y revisa la configuración SPF/DKIM/DMARC.",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc5321"
+      ]
+    }
+  ],
+  "statistics": {
+    "confirmado": 0,
+    "probable": 12,
+    "potencial": 2,
+    "indicio": 3,
+    "recomendacion": 0
+  },
+  "schema": "pydnsaudit/audit-result",
+  "schema_version": 1
+}
